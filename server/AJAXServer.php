@@ -1,9 +1,28 @@
 <?php
-/* ===============================================================================================
+/** ===============================================================================================
  * AJAX Action handler class
+ * @copyright: (C) 2014-2016 Kibble Games Inc in cooperation with Vancouver Film School. All Rights Reserved. 
+ * @author: Scott Henshaw {@link mailto:shenshaw@vfs.com} 
+ * @version: 1.1.0 
  *
+ * 			DO NOT MODIFY THIS CLASS
+ * 
+ * Subclass this AJAXServer and override the one method, handleAction to extend the server
+ * capabilities. 
+ * 
+ * Each command lives in its own folder. Each folder should contain a single index.php.
+ * Each index.php should contain a Server class that extends AJAXServer (this file/class).
+ * Each Server class created in this way should implement one method (an override) handleAction().
+ * Finally, each server needs to be created the net effect of which is to call the handleAction method.
+ * 
+ * The folder path acts as the command, i.e:
+ * 	
+ * 		If a client JS app wants to post a login command it would $.post('server/login', data ) ...
+ * 
+ * 		The index.php under server/login would be interpreted.  A server defined and then created
+ * 		before data can be processed and sent back (if any).
+ * 
  */
-
 class AJAXServer {
 
     private $debug_mode          = TRUE;

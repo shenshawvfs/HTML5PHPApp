@@ -1,9 +1,9 @@
-/*
+/**
  * Game Singleton MAIN
  * 
- * @copyright: (C) 2014 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @copyright: (C) 2014-2016 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
  * @author:    Scott Henshaw {@link mailto:shenshaw@vfs.com} 
- * @version:   1.1.0
+ * @version:   1.2.0
  * 
  * @summary:   Framework Singleton Class to contain a web app
  * 
@@ -12,13 +12,12 @@ var game = (function() {
 	
 	// Constants
     function GameClass() {
-        /*
-            Define a class inside this closure.  We will return this entire class as
-            an object
-            
-            @params:  none
-            @returns: Game Class - used as a singleton
-            
+        /**
+        Define a class inside this closure.  We will return this entire class as
+        an object
+        
+        @params:  none
+        @returns: Game Class - used as a singleton            
         */
         
     	// Constants
@@ -27,16 +26,17 @@ var game = (function() {
         var TARGET_MS_PER_TICK = SECONDS_AS_MS / TARGET_FPS;
         var UPDATE_MIN_MS = 2000;
         
-        var local = {
+        var __private__ = {
             // the local object contains all the private members used in this class
                 
             tick: 0,  // Start with tick 0
             start: null,
         };	
+        var my = __private__;
         var self = this;
 	
-        self.init = function() {
-       	
+        
+        self.init = function() {       	
         	// Do some initialization of the member variables for the app
         	// Create controllers to manage model objects and link them to DOM view elements
             
@@ -45,8 +45,8 @@ var game = (function() {
                 
                 event.preventDefault();
                 
-                var request = "action=login&" + $(this).serialize();                
-                $.post('server.php', request )
+                var request = $(this).serialize();                
+                $.post('server/login', request )
                     .then( function( data ) {
                         
                         var result = $.parseJSON( data );
@@ -61,47 +61,44 @@ var game = (function() {
 	
 
         
-        local.iterate = function() {
+        my.iterate = function() {
     		// This is the simplest loop possible. - use Game.js for an app that needs a more complex render loop
             interval = setInterval( function() {
             	
-            	local.update();
-            	local.render();
+            	my.update();
+            	my.render();
             	
             }, TARGET_MS_PER_TICK );
     	}
     	
     	
-    	
-    	local.frame = function( timestamp ) {
-    	    
-    	    if (!local.start) 
-    	        local.start = timestamp;
-    	    
-    	    var progress = timestamp - local.start;
-    	    local.update( progress );
-    	    local.render( progress )
-    	    
-    	    if (progress < UPDATE_MIN_MS)
-    	        window.requestAnimationFrame( local.frame );
-    	}
-    	
-    	
-    	
     	self.run = function() {
-    	
-    	    window.requestAnimationFrame( local.frame );
+    	    	    
+    	    var frame = function( timestamp ) {
+                
+                if (!my.start) 
+                    my.start = timestamp;
+                
+                var progress = timestamp - my.start;
+                my.update( progress );
+                my.render( progress )
+                
+                if (progress < UPDATE_MIN_MS)
+                    window.requestAnimationFrame( frame );
+            }
+    	    
+    	    window.requestAnimationFrame( frame );
     	}
 
     	
 	
-    	local.update = function( timestamp ) {
+    	my.update = function( timestamp ) {
             //Update the app/simulation model 
     
         }
     
         
-        local.render = function( timestamp ) {
+        my.render = function( timestamp ) {
             // Refresh the view - canvas and dom elements
             
         }
