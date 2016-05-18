@@ -12,8 +12,8 @@ var app = (function() {
 
 	function AppClass() {
 	    
+        // the local object contains all the private members used in this class             
 	    var __private__ = {
-	        // the local object contains all the private members used in this class	            
             done: false
 	    };
 	    var my = __private__;
@@ -25,33 +25,76 @@ var app = (function() {
             // view elements
             
             // Define the Event handlers for the app
+            
+            // What do you want to do on form submission?
+            $('.nickname-form').on('submit', function( event ) {
+                event.preventDefault();
+                
+                // Do your thing here when the user presses the submit button on this form.
+                var command = { 'action': 'validate' }; 
+                var formData = $(this).serialize();
+                var requestParamString = $.param( command ) + "&" + formData;
+                
+            });
+            
+            $(".default-form").on('submit', function( event ) {
+                
+                /*
+                 Note the calls in the handler MUST use the app class to 
+                 reference the post/response calls so that they can be 
+                 resolved at run time
+                 */
+                event.preventDefault();
+                
+                var formData = $(this).serialize();
+                var requestParamString = formData;
+                
+                $.post( "server/simple_server.php", requestParamString )
+                
+                    .then( function( data ) {
+                        
+                        // this callback is triggered WHEN we get a response
+                        
+                        var response = $.parseJSON( data );
+                        
+                        // compose the view markup based on JSON data we recieved
+                        var markup = "Favorite beverage: " + response.favorite_beverage;
+                        markup += "<br />Favorite restaurant: " + response.favorite_restaurant;
+                        markup += "<br />Gender: " + response.gender;
+                        markup += "<br />JSON: " + response.json;
+                
+                        // Display the markup in the result section
+                        $(".the-return").html( markup );
+                
+                        // Pop an alert to let the user know that the result is computed
+                        alert("Form submitted successfully.\nReturned json: " + response.json );                    
+                    });
+                return false;
+            });
     	}	
         
         
     	this.run = function() {
             // Run the app
-    		
-    		while (!done) {
+    		var m = __private__; // One way to make private things easier to read as members
+    	    
+    		while (!m.done) {
     			
-    			my.updateData();			
-    			my.refreshView();			
+    			updateData();			
+    			refreshView();			
     			
     		}
     	};    	
     	
     	
-        my.updateData = function() {
+    	function updateData() {
             // Update the app/simulation model
         	// is the app finished running?
-        	done = true;
+        	__private__.done = true;
         }
-    
-        
-        my.refreshView = function() {
-            // Refresh the view - canvas and dom elements
-        	
-        }
-        
+            
+    	// Refresh the view - canvas and dom elements
+        function refreshView() { }        
     }
 	
 	return new AppClass; 	
