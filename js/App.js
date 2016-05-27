@@ -27,7 +27,7 @@ var app = (function() {
             // Define the Event handlers for the app
             
             // What do you want to do on form submission?
-            $('.nickname-form').on('submit', function( event ) {
+            $('#nickname-form').on('submit', function( event ) {
                 event.preventDefault();
                 
                 // Do your thing here when the user presses the submit button on this form.
@@ -37,14 +37,14 @@ var app = (function() {
                 
             });
             
-            $(".default-form").on('submit', function( event ) {
+            $("#validate-form").on('submit', function( event ) {
                 
                 /*
                  Note the calls in the handler MUST use the app class to 
                  reference the post/response calls so that they can be 
                  resolved at run time
                  */
-                event.preventDefault();
+                //event.preventDefault();
                 
                 var formData = $(this).serialize();
                 var requestParamString = formData;
