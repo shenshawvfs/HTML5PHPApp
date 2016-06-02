@@ -9,8 +9,8 @@ class Server extends AJAXServer {
     public function handleAction( $request ) {
         // The 'action' requested is named for the folder this server lives in
 
-        $username = $request ['name'];
-        $passwd = $request ['passwd'];
+        $bev = $request['favorite_beverage'];
+        $eatery = $request['favorite_restaurant'];
 
         // Authenticate with username and password
         // Here is the actual worker function, this is where you do your server sode processing and
@@ -24,14 +24,12 @@ class Server extends AJAXServer {
 
         // Do what you need to do with the info. The following are some examples.
         // This is the real set of actual things we use
-        $response ["error"] = - 1;
-        if ($_POST ["nick-name"] == "") {
-            $response ["nick-name"] = "John Doe";
-        }
-        $response ["nick-name"] = $_POST ["nick-name"];
-        $response ["id"] = password_hash ( $passwd, PASSWORD_DEFAULT );
-        $response ["msg"] = "You are logged in " . $response ["nick-name"];
-        $response ["error"] = 0;
+        $response["error"] = -1;
+        $response["favorite_beverage"] = "Coke";
+        $response["favorite_restaurant"] = $eatery;
+        $response["msg"] = "Your favorite beverage is: " . $response["favorite_beverage"];
+        $response["json"] = json_encode( $response );
+        $response["error"] = 0;
 
         return $response;
     }

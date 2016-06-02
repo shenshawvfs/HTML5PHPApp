@@ -30,8 +30,7 @@ var app = (function() {
             $('#nickname-form').on('submit', function( event ) {
                 event.preventDefault();
                 
-                // Do your thing here when the user presses the submit button on this form.
-                var command = { 'action': 'validate' }; 
+                // Do your thing here when the user presses the submit button on this form.           
                 var formData = $(this).serialize();
                 var requestParamString = $.param( command ) + "&" + formData;
                 
@@ -44,15 +43,14 @@ var app = (function() {
                  reference the post/response calls so that they can be 
                  resolved at run time
                  */
-                //event.preventDefault();
+                event.preventDefault();
                 
                 var formData = $(this).serialize();
                 var requestParamString = formData;
                 
-                $.post( "server/simple_server.php", requestParamString )
-                
-                    .then( function( data ) {
-                        
+                // Note: the trailing slash IS important
+                $.post( "server/validate/", requestParamString )                
+                    .then( function( data ) {                        
                         // this callback is triggered WHEN we get a response
                         
                         var response = $.parseJSON( data );

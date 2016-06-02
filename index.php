@@ -43,7 +43,7 @@
 
                     <h3>My main app area here</h3>
                     <section id='intro-screen'>
-                        <form id='nickname-form'>
+                        <form id='nickname-form' method='POST' action='server/logon'>
                             <label name='nick-name'>Name: </label>
                             <input type='text'   name='nick-name' value='' />
                             <input type='submit' name='action'    value='Submit' />
@@ -52,7 +52,8 @@
                     <p></p>
 
                     <section id="test-form">
-                        <form id="validate-form" class="default-form" accept-charset="utf-8">
+                        <form id="validate-form" class="default-form"
+                              accept-charset="utf-8" method='POST' action='server/validate'>
                             <input type="hidden" name="action" value="validate" />
                             <input type="text" name="favorite_beverage" value="" placeholder="Favorite restaurant" />
                             <input type="text" name="favorite_restaurant" value=""  placeholder="Favorite beverage" />
