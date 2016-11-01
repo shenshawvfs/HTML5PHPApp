@@ -27,18 +27,17 @@ var app = (function() {
             // Define the Event handlers for the app
 
             // What do you want to do on form submission?
-            $('.nickname-form').on('submit', function( event ) {
+            $('#nickname-form').on('submit', function( event ) {
                 event.preventDefault();
-
-                // Do your thing here when the user presses the submit button on this form.
-                var command = { 'action': 'validate' };
+                
+                // Do your thing here when the user presses the submit button on this form.           
                 var formData = $(this).serialize();
                 var requestParamString = $.param( command ) + "&" + formData;
 
             });
-
-            $(".default-form").on('submit', function( event ) {
-
+            
+            $("#validate-form").on('submit', function( event ) {
+                
                 /*
                  Note the calls in the handler MUST use the app class to
                  reference the post/response calls so that they can be
@@ -48,12 +47,10 @@ var app = (function() {
 
                 var formData = $(this).serialize();
                 var requestParamString = formData;
-
-                //$.post('server/validate/', requestparamString)
-                $.post( "server/simple_server.php", requestParamString )
-
-                    .then( function( data ) {
-
+                
+                // Note: the trailing slash IS important
+                $.post( "server/validate/", requestParamString )                
+                    .then( function( data ) {                        
                         // this callback is triggered WHEN we get a response
 
                         var response = $.parseJSON( data );

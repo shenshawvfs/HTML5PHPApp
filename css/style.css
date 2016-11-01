@@ -25,7 +25,7 @@ a {
     text-decoration:underline;
 }
 
-.clar-fix {
+.clearfix {
     clear: both;
 }  
 
@@ -63,13 +63,13 @@ a {
 
 #sidebar {
     width: 10%;
-    margin: 0.5em 0 2em 0.5em;
+    /* margin: 0 1em; */
+    padding: 0 1em;
 }
 
 #sidebar-data {
     width: 100%;
-    height: 670px;
-    /* margin-top: 0em; */
+    height: 768px;
 }
 
 #wrapper {
@@ -114,4 +114,12 @@ a {
 #app-frame {
     width: 90%;
     margin:  0 auto;
+}
+
+header {
+    height:  8em;
+}
+
+#test-form {
+    margin-left: 1em;
 }
