@@ -23,12 +23,14 @@ class Game {
 	
     constructor() {
         /**
-        Define a class inside this closure.  We will return this entire class as
-        an object
-        
+        We will return this entire class as an object        
         @params:  none
         @returns: Game Class - used as a singleton            
         */
+        if (gameInstance != null)
+            return gameInstance;
+        
+        gameInstance = this;
         
         this.__private__ = new WeakMap();
 
@@ -56,6 +58,8 @@ class Game {
                     $('#results-area').html( result.msg );    
                 });
         });
+        
+        return gameInstance;
     }
         
 
@@ -114,7 +118,7 @@ class Game {
 // Define the set of private methods that you want to make public and return them
 $(document).ready( () => {
 
-    game = new Game();
+    let game = new Game();
     game.run();
 
 });

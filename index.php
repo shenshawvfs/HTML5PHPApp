@@ -4,16 +4,13 @@
     <title>HTML5 App Demo</title>
     <link rel='stylesheet' href='css/style.css'>
 
+    <!-- Local styles -->
+    <style type='text/css'></style>
+
     <!-- This is the key CDN to pull jQuery from -->
     <!-- To operate offline we may want these to load from a local source -->
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
-    <!-- Load local libraries here - Optimize later to concatenate and minify -->
-    <script src='js/lib/vfs-lib.js'></script>
-
-    <!-- Local styles -->
-    <style type='text/css'>
-    </style>
 </head>
 <!-- The Structure of your app is here - Box model blocks of area -->
 <body>
@@ -73,8 +70,8 @@
     </div>
 
     <!-- Uncomment one of these, are we building an app or a game? -->
-    <!-- <script src='js/Game.js'></script> -->
-    <script src="js/App.js"></script>
+    <!-- <script src='scripts/Game.js'></script> -->
+    <script src="scripts/App.js"></script>
 
 </body>
 </html>
