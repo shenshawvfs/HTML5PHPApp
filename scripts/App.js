@@ -10,40 +10,38 @@
  */
 'use strict';
 
+// Introduce a "namespace"
+var vfs = {	
+	__private__: new WeakMap()
+};
+
+
 // Constants
-var SECONDS_AS_MS = 1000;   
-var TARGET_FPS = 60;
-var TARGET_MS_PER_TICK = SECONDS_AS_MS / TARGET_FPS;
-var UPDATE_MIN_MS = 2000;
+const SECONDS_AS_MS = 1000;   
+const TARGET_FPS = 60;
+const TARGET_MS_PER_TICK = SECONDS_AS_MS / TARGET_FPS;
+const UPDATE_MIN_MS = 2000;
 
-var appInstance = null;
 
+// Define the App Controller
 class App {
 
     constructor() {
 	    
-        if (appInstance != null)
-            return appInstance;
-        
-        appInstance = this;
-        
         // the local object contains all the private members used in this class             
         // Do some initialization of the member variables for the app
-	    this.__private__ = new WeakMap();
-	    let privateData = {
+	    let myData = {
 
             done:   false,
             userId: 0
 	    };
-	    this.__private__.set( this, privateData );
-	    
-	    
+	    vfs.__private__.set( this, myData );
+	    let my = myData;
+	    	    
         // Define the Event handlers for the app
         $('#nickname-form').on('submit', ( event ) => {
             
             event.preventDefault();
-            
-            let _m = this.__private__.get( this );
             
             // Do your thing here when the user presses the submit button on this form.           
             let us_requestParams = $(event.target).serialize();            
@@ -55,7 +53,7 @@ class App {
                     
                     if (!response.error) {
                         
-                        _m.userId = response.id;
+                        my.userId = response.id;
                         // Use an ES6 trick to parameterize a string
                         $('#results-area').html(`Welcome ${response.nick-name}, ${response.msg} <br/>`);
                     }
@@ -77,10 +75,10 @@ class App {
                 .then( ( data ) => { 
                     
                     // this callback is triggered WHEN we get a response                        
-                    var response = $.parseJSON( data );
+                    let response = $.parseJSON( data );
                     
                     // compose the view markup based on JSON data we recieved
-                    var markup = "Favorite beverage: " + response.favorite_beverage;
+                    let markup = "Favorite beverage: " + response.favorite_beverage;
                     markup += "<br />Favorite restaurant: " + response.favorite_restaurant;
                     markup += "<br />Gender: " + response.gender;
                     markup += "<br />JSON: " + response.json;
@@ -93,35 +91,33 @@ class App {
                 });
             return false;
         });
-        
-        return appInstance;
 	}	
         
         
 	run() {
         // Run the app
-		let _m = this.__private__.get( this ); 
+		let my = vfs.__private__.get( this ); 
 		// One way to make private things easier to read as members
 	    
-		while (!_m.done) {
+		while (!my.done) {
 			
-			this._updateData();			
-			this._refreshView();			
+			this.updateData();			
+			this.refreshView();			
 			
 		}
 	};    	
 	
 	
-	_updateData() {
+	updateData() {
         // Update the app/simulation model
     	// is the app finished running?
-    	let _m = this.__private__.get( this );
-    	_m.done = true;
+    	let my = vfs.__private__.get( this );
+    	my.done = true;
     }
         
 	
 	// Refresh the view - canvas and dom elements
-    _refreshView() { }        
+    refreshView() { }        
 	
 }  // Run the unnamed function and assign the results to app for use.
 

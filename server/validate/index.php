@@ -27,6 +27,7 @@ class Server extends AJAXServer {
         $response["error"] = -1;
         $response["favorite_beverage"] = "Coke";
         $response["favorite_restaurant"] = $eatery;
+        $response["gender"] = $request["gender"];
         $response["msg"] = "Your favorite beverage is: " . $response["favorite_beverage"];
         $response["json"] = json_encode( $response );
         $response["error"] = 0;
