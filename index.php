@@ -23,6 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <html>
 	<head>
 	    <title>HTML5 App Demo</title>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+        
 	    <link rel='stylesheet' href='css/style.css'>
 
 	    <!-- Local styles -->

@@ -27,17 +27,23 @@ const UPDATE_MIN_MS = 2000;
 class App {
 
     constructor() {
-	    
         // the local object contains all the private members used in this class             
+        this['private'] = {
+            data:    new WeakMap(),
+            members: ( key, value ) => {
+                if (value != undefined) 
+                    this.private.data.set( key, value );
+                return this.private.data.get( key );
+            }
+        };
+        
         // Do some initialization of the member variables for the app
-	    let myData = {
+        let my = this.private.members( this, {
 
             done:   false,
             userId: 0
-	    };
-	    vfs.__private__.set( this, myData );
-	    let my = myData;
-	    	    
+	    });
+	    
         // Define the Event handlers for the app
         $('#nickname-form').on('submit', ( event ) => {
             
@@ -92,13 +98,13 @@ class App {
             return false;
         });
 	}	
-        
-        
+    
+    
 	run() {
         // Run the app
-		let my = vfs.__private__.get( this ); 
-		// One way to make private things easier to read as members
-	    
+	    // One way to make private things easier to read as members
+        let my = this.private.members( this );
+				
 		while (!my.done) {
 			
 			this.updateData();			
@@ -111,13 +117,14 @@ class App {
 	updateData() {
         // Update the app/simulation model
     	// is the app finished running?
-    	let my = vfs.__private__.get( this );
+    	let my = this.private.members( this );
     	my.done = true;
     }
         
 	
-	// Refresh the view - canvas and dom elements
-    refreshView() { }        
+    refreshView() { 
+        // Refresh the view - canvas and dom elements
+    }        
 	
 }  // Run the unnamed function and assign the results to app for use.
 
