@@ -1,7 +1,8 @@
 <?php
-
-/* ===============================================================================================
+/** ===============================================================================================
  * AJAX Action handler class
+ * @author: Scott Henshaw
+ * @copyright: 2015 Kibble Games Inc, in cooperation with VFS
  *
  */
 class Server {
@@ -143,7 +144,17 @@ class Server {
         }
 
         $response["favorite_restaurant"] = "McDonald's";
-        return $response;
+
+
+
+        if ($this->debug_mode) {
+
+            $response["json"] = json_encode( $response );
+        }
+
+        // Respond to the client with a JSON string containing attrib => value pairs encoded
+        return json_encode( $response );
+
     }
 }
 
