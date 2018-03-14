@@ -3,7 +3,7 @@
  * 
  * @copyright: (C) 2016-2018 Kibble Games Inc in cooperation with Vancouver Film School. All Rights Reserved. 
  * @author: Scott Henshaw {@link mailto:shenshaw@vfs.com} 
- * Collaborator: Clinton Ramonida {@link mailto:cramonida@vfs.com}
+ * @Collaborator: Clinton Ramonida {@link mailto:cramonida@vfs.com}
  * 
  * @version: 2.2.0 ES2017+ using Module
  * 

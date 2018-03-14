@@ -5,7 +5,7 @@ HTML5 + PHP App Template
 @Copyright 2014-2017, Vancouver Film School, in cooperation with Kibble Games Inc.
 
 @Author: Scott Henshaw
-Contributor: Clinton Ramonida
+@Contributor: Clinton Ramonida
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
