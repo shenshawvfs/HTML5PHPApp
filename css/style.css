@@ -21,10 +21,10 @@ body {
     display: grid;
     grid-gap: 5px;
     grid-template: 
-    [row1-start] "navbar navbar navbar navbar" 50px [row1-end]
-    [row2-start] "headbar headbar headbar headbar" 150px [row2-end]
-    [row3-start] "sidecontent thecontent thecontent thecontent" 800px [row3-end]
-    [row4-start] "footcontent footcontent footcontent footcontent" 80px [row4-end];
+    [row1-start] "navbar navbar navbar navbar navbar navbar" 50px [row1-end]
+    [row2-start] "headbar headbar headbar headbar headbar headbar" 150px [row2-end]
+    [row3-start] ". sidecontent thecontent thecontent thecontent ." 800px [row3-end]
+    [row4-start] "footcontent footcontent footcontent footcontent footcontent footcontent" 80px [row4-end];
 }
 
 /* GRID AREAS/ITEMS (CHILDREN) */
