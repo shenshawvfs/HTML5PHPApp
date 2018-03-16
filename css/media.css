@@ -14,7 +14,7 @@
         -max = "desktop first design" (everything inside would be changes to mobile screen)
         -min = "mobile first design" (everything inside would be changes to desktop screen)
 
-    Since we're using our main style.css as a "Desktop first design"
+    Since we're using our main style.css as a "A default Desktop First Design"
     Only put the changes here for whatever you want to change in your mobile screen.
 */
 @media only screen and (max-width: 812px) {   /* Small screen, non-retina */
@@ -22,6 +22,11 @@
   /* Since we have a smaller screen, we need bigger fonts */
   body {
     font-size: 25px;
+  }
+
+  /* Since we have a smaller screen, we need better spacing */
+  .spacer{
+    height: 150px;
   }
 
   /* GRID FRAME/CONTAINER */
@@ -35,62 +40,43 @@
           [row4-start] "sidecontent" 150px [row4-end] 
           [row5-start] "footcontent" 100px [row5-end];
   }
-
-  /* Since we have a smaller screen, we need better spacing */
-  .spacer{
-      height: 150px;
-  }
-
-  #results-area{
-      height: 300px;
-      width: 230px;
-  }
 }
 
-@media
+  /* Mobile First Designs (Convert min-width to max-width to conform with our Desktop First Design in our style.css) */
+@media      
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (                min-resolution: 192dpi) and (min-width: 320px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 320px) { 
-
   /* Small screen, retina, stuff to override above media query */
-
 }
 
-@media only screen and (min-width: 700px) {
-
+@media only screen and (min-width: 700px) { 
   /* Medium screen, non-retina */
-
 }
 
-@media
+@media      
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 700px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 700px),
 only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 700px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 700px),
 only screen and (                min-resolution: 192dpi) and (min-width: 700px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 700px) { 
-
   /* Medium screen, retina, stuff to override above media query */
-
 }
 
-@media only screen and (min-width: 1300px) {
-
+@media only screen and (min-width: 1300px) {      
   /* Large screen, non-retina */
-
 }
 
-@media
+@media        
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
 only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
 only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
-
   /* Large screen, retina, stuff to override above media query */
-
 }

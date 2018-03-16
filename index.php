@@ -118,8 +118,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
                         <div class="grid-results area-child">
                             <!-- Dynamic updates here -->
-							<div id='results-area'>
-								<h3>Results Area: Dynamic Updates here!</h3>
+							<div>
+								<h3 id='results-area'>Results Area: Dynamic Updates here!</h3>
 							</div>
                         </div>
 
