@@ -29,6 +29,12 @@
     height: 150px;
   }
 
+  #results-area{
+    position: absolute;
+    width: 60%;
+    height: 25%;
+  }
+
   /* GRID FRAME/CONTAINER */
   .grid-frame {
       display: grid;

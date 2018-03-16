@@ -85,7 +85,9 @@ body {
 }
 
 #results-area{
-    overflow: auto;
+    position: fixed;
+    overflow:  auto;
+    width: 400px;
 }
 
 
