@@ -2,61 +2,87 @@
  * CSS Media Query Styles for VFS Demo App
  *
  * Copyright 2014-2015, Vancouver Film School
+ * @Author: Clinton Ramonida & Scott Henshaw
+ * 
  *
  */
  
  
- 
-@media only screen and (min-width: 320px) {
+/* BASIC MOBILE APP LAYOUT USING GRID */
+ /* 
+    (max-width: XXXpx) means: 
+        -max = "desktop first design" (everything inside would be changes to mobile screen)
+        -min = "mobile first design" (everything inside would be changes to desktop screen)
 
-  /* Small screen, non-retina */
+    Since we're using our main style.css as a "A default Desktop First Design"
+    Only put the changes here for whatever you want to change in your mobile screen.
+*/
+@media only screen and (max-width: 812px) {   /* Small screen, non-retina */
+  
+  /* Since we have a smaller screen, we need bigger fonts */
+  body {
+    font-size: 25px;
+  }
 
+  /* Since we have a smaller screen, we need better spacing */
+  .spacer{
+    height: 150px;
+  }
+
+  #results-area{
+    position: absolute;
+    width: 60%;
+    height: 25%;
+  }
+
+  /* GRID FRAME/CONTAINER */
+  .grid-frame {
+      display: grid;
+      grid-gap: 5px;
+      grid-template: 
+          [row1-start] "navbar" 50px [row1-end] 
+          [row2-start] "headbar" 200px [row2-end] 
+          [row3-start] "thecontent" 1000px [row3-end] 
+          [row4-start] "sidecontent" 150px [row4-end] 
+          [row5-start] "footcontent" 100px [row5-end];
+  }
 }
 
-@media
+  /* Mobile First Designs (Convert min-width to max-width to conform with our Desktop First Design in our style.css) */
+@media      
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (                min-resolution: 192dpi) and (min-width: 320px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 320px) { 
-
   /* Small screen, retina, stuff to override above media query */
-
 }
 
-@media only screen and (min-width: 700px) {
-
+@media only screen and (min-width: 700px) { 
   /* Medium screen, non-retina */
-
 }
 
-@media
+@media      
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 700px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 700px),
 only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 700px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 700px),
 only screen and (                min-resolution: 192dpi) and (min-width: 700px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 700px) { 
-
   /* Medium screen, retina, stuff to override above media query */
-
 }
 
-@media only screen and (min-width: 1300px) {
-
+@media only screen and (min-width: 1300px) {      
   /* Large screen, non-retina */
-
 }
 
-@media
+@media        
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
 only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
 only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
-
   /* Large screen, retina, stuff to override above media query */
-
 }

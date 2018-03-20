@@ -24,7 +24,7 @@ const UPDATE_MIN_MS = 2000;
 
 
 // Define the App Controller
-class App {
+export class App {
 
     constructor() {
         // the local object contains all the private members used in this class             
