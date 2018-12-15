@@ -1,24 +1,6 @@
 <!DOCTYPE html>
 <!--
 HTML5 + PHP App Template
-
-@Copyright 2014-2017, Vancouver Film School, in cooperation with Kibble Games Inc.
-
-@Author: Scott Henshaw
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 -->
 <html>
 	<head>
@@ -26,6 +8,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
         
 	    <link rel='stylesheet' href='css/style.css'>
+
+		<!-- This is the key CDN to pull jQuery from -->
+		<!-- To operate offline we may want these to load from a local source -->
+		<script src='//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
 	    <!-- Local styles -->
 	    <style type='text/css'></style>
@@ -85,17 +71,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             </section> <!-- wrapper -->
         </section>
 
-        <section id="scripts">
-		    <!-- This is the key CDN to pull jQuery from -->
-		    <!-- To operate offline we may want these to load from a local source -->
-		    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' defer></script>
-
-            <!--
-             Load your app core here, while not strictly W3C compliant it guarentees
-             that the basic HTML gets loaded and you have something to start
-             debugging if any of your code fails.
-           -->
-            <script src='scripts/App.js' type="text/javascript" defer></script>
-        </section>
-</body>
+		<!--
+			Load your app core here, while not strictly W3C compliant it guarentees
+			that the basic HTML gets loaded and you have something to start
+			debugging if any of your code fails.
+		-->
+		<script type="module" src='scripts/Main.js'></script>
+	</body>
 </html>
+<!--
+@Copyright 2014-2019, Vancouver Film School, in cooperation with Kibble Online Inc.
+
+@Author: Scott Henshaw
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->

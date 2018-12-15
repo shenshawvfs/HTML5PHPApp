@@ -127,15 +127,3 @@ class App {
     }        
 	
 }  // Run the unnamed function and assign the results to app for use.
-
-
-// ===================================================================
-// MAIN
-// Define the set of private methods that you want to make public and return
-// them
-$(document).ready( function() {
-
-    let app = new App();
-    app.run();
-
-});
