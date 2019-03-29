@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!--
+@Copyright (C)2014-2019, Kibble Online Inc., in cooperation with Vancouver Film School
 HTML5 + PHP App Template
 -->
 <html>
@@ -80,7 +81,6 @@ HTML5 + PHP App Template
 	</body>
 </html>
 <!--
-@Copyright 2014-2019, Vancouver Film School, in cooperation with Kibble Online Inc.
 
 @Author: Scott Henshaw
 

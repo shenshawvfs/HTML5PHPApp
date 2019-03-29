@@ -24,49 +24,36 @@ const UPDATE_MIN_MS = 2000;
 
 
 // Define the App Controller
-class App {
+export default class App {
 
     constructor() {
-        // the local object contains all the private members used in this class             
-        this['private'] = {
-            data:    new WeakMap(),
-            members: ( key, value ) => {
-                if (value != undefined) 
-                    this.private.data.set( key, value );
-                return this.private.data.get( key );
-            }
-        };
         
         // Do some initialization of the member variables for the app
-        let my = this.private.members( this, {
-
+        let my = this.__private__ = {
             done:   false,
             userId: 0
-	    });
+	    };
 	    
         // Define the Event handlers for the app
-        $('#nickname-form').on('submit', ( event ) => {
-            
+        $('#nickname-form').on('submit', event => {            
             event.preventDefault();
             
             // Do your thing here when the user presses the submit button on this form.           
-            let us_requestParams = $(event.target).serialize();            
-            $.post('server/login/', us_requestParams)
-                .then( ( data ) => {
-                    
+            let requestParams = $(event.target).serialize();            
+            $.post('server/login/', requestParams)
+                .then( jsonResponse => {                    
                     // this callback is triggered WHEN we get a response                        
-                    var response = $.parseJSON( data );
+                    var response = $.parseJSON( jsonResponse );
                     
-                    if (!response.error) {
-                        
+                    if (!response.error) {                        
+
                         my.userId = response.id;
-                        // Use an ES6 trick to parameterize a string
                         $('#results-area').html(`Welcome ${response.nick-name}, ${response.msg} <br/>`);
                     }
                 });
         });
         
-        $("#validate-form").on('submit', ( event ) => {            
+        $("#validate-form").on('submit', event => {            
             /*
              Note the calls in the handler MUST use the app class to 
              reference the post/response calls so that they can be 
@@ -74,14 +61,13 @@ class App {
              */
             event.preventDefault();
             
-            let us_requestParams = $(event.target).serialize();
+            let requestParams = $(event.target).serialize();
             
             // Note: the trailing slash IS important
-            $.post( "server/validate/", us_requestParams )                
-                .then( ( data ) => { 
-                    
+            $.post('server/validate/', requestParams )                
+                .then( jsonResponse => {                     
                     // this callback is triggered WHEN we get a response                        
-                    let response = $.parseJSON( data );
+                    let response = $.parseJSON( jsonResponse );
                     
                     // compose the view markup based on JSON data we recieved
                     let markup = "Favorite beverage: " + response.favorite_beverage;
@@ -97,33 +83,25 @@ class App {
                 });
             return false;
         });
-	}	
+	}	    
     
-    
-	run() {
-        // Run the app
-	    // One way to make private things easier to read as members
-        let my = this.private.members( this );
-				
-		while (!my.done) {
-			
-			this.updateData();			
-			this.refreshView();			
-			
-		}
-	};    	
-	
-	
-	updateData() {
+	update() {
         // Update the app/simulation model
     	// is the app finished running?
-    	let my = this.private.members( this );
+    	let my = this.__private__;
     	my.done = true;
     }
-        
-	
-    refreshView() { 
+        	
+    render() { 
         // Refresh the view - canvas and dom elements
     }        
 	
+	run() {
+        // Run the app
+	    // One way to make private things easier to read as members
+        let my = this.__private__;
+				
+        this.update();			
+        this.render();						
+	}		
 }  // Run the unnamed function and assign the results to app for use.
